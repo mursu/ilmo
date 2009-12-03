@@ -1,7 +1,9 @@
 <h2>Courses</h2>
-
+<div>
+	 Hello, <%= @user.real_name%>!
+	 <%= link_to 'Logout', :controller => 'session',  :action => 'logout' %>
+</div>
 <%= link_to 'New course', new_course_path %>
-
 <ul>
 <% @courses.each do |course| %>
     <li><%= link_to h(course.name), course %></li>

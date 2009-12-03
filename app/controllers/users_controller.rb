@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
+  
+  skip_before_filter :authorize, :only => [:new ,:create]
+  
   # GET /users
   def index
-    @users = User.all
+    @users = User.find(:all, :order => :username)
   end
 
   # GET /users/1
@@ -24,8 +27,8 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      flash[:notice] = 'User was successfully created.'
-      redirect_to(@user)
+      flash[:notice] = "User #{@user.username} was successfully created."
+      redirect_to :action => 'index'
     else
       render :action => "new"
     end
@@ -36,8 +39,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      flash[:notice] = 'User was successfully updated.'
-      redirect_to(@user)
+      flash[:notice] = "User #{@user.username} was successfully updated."
+      redirect_to :action => 'index'
     else
       render :action => "edit"
     end

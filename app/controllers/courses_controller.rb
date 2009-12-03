@@ -1,6 +1,7 @@
 class CoursesController < ApplicationController
   # GET /courses
   def index
+    @user = User.find_by_id(session[:user_id])
     @courses = Course.all
   end
 

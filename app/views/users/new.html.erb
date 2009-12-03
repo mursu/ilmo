@@ -17,11 +17,11 @@
   </p>
   <p>
     <%= f.label :password %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :plain_password %>
   </p>
 	<p>
 		<%= f.label 'Confirm password' %><br />
-		<%= f.password_field :password_confirmation %>
+		<%= f.password_field :plain_password_confirmation %>
 	</p>
   <p>
     <%= f.submit 'Create' %>
