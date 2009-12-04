@@ -1,1 +1,17 @@
-foobar
+<h2>Exercise group: <%= h @exercise_group.course_instance.instance_name %>, <%=h @exercise_group.name %></h2>
+ 
+<h2>Attendees:</h2>
+
+<p><%= link_to 'Register', new_registration_path(@exercise_group.id) %>
+ 
+<% if @exercise_group.registrations.any? %>
+<ul>
+<% @exercise_group.registrations.each do |registration| %>
+   <li><%= registration.user.real_name %></li>
+<% end %>
+</ul>
+<% else %>
+<p>No registrations.</p>
+<% end %>
+ 
+<%= link_to 'Back', course_instance_path(@exercise_group.course_instance) %>

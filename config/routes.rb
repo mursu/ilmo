@@ -1,4 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
+  map.new_registration 'registration/create/:exercise_group_id', :controller => 'registrations', :action => 'create'
+  map.resources :registrations
+
   map.resources :users
   map.resources :courses
   map.resources :course_instances
