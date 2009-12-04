@@ -1,4 +1,8 @@
+require 'paperclip'
+
 class User < ActiveRecord::Base
+  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  
   has_many :registrations, :dependent => :destroy
 
   validates_uniqueness_of :username
@@ -8,6 +12,11 @@ class User < ActiveRecord::Base
   attr_accessor :plain_password
   validates_confirmation_of :plain_password
   validates_length_of :plain_password, :in => 5..32
+
+  named_scope :with_email, :conditions => "email IS NOT NULL"
+  
+  after_create :update_newsfeed
+  
 
   def self.authenticate(username, plain_password)
     user = self.find_by_username(username)
@@ -33,6 +42,10 @@ class User < ActiveRecord::Base
   end
   
   private
+
+  def update_newsfeed
+    Newsfeed.user_registered(self)
+  end
   
   def create_new_salt
     self.salt = self.object_id.to_s + rand.to_s

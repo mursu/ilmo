@@ -3,6 +3,7 @@ class CoursesController < ApplicationController
   def index
     @user = User.find_by_id(session[:user_id])
     @courses = Course.all
+    @newsfeed = Newsfeed.all
     
     respond_to do |format|
       format.html

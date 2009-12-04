@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091204023225) do
+ActiveRecord::Schema.define(:version => 20091204050548) do
 
   create_table "course_instances", :force => true do |t|
     t.string   "instance_name"
@@ -28,6 +28,12 @@ ActiveRecord::Schema.define(:version => 20091204023225) do
   create_table "exercise_groups", :force => true do |t|
     t.string   "name"
     t.integer  "course_instance_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "newsfeeds", :force => true do |t|
+    t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,6 +64,10 @@ ActiveRecord::Schema.define(:version => 20091204023225) do
     t.datetime "updated_at"
     t.string   "salt"
     t.string   "email"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
 end

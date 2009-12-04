@@ -8,6 +8,10 @@
     <%= f.text_field :username %>
   </p>
   <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
     <%= f.label :real_name %><br />
     <%= f.text_field :real_name %>
   </p>
@@ -23,9 +27,14 @@
 		<%= f.label 'Confirm password' %><br />
 		<%= f.password_field :plain_password_confirmation %>
 	</p>
+	<p>
+		<%= f.file_field :avatar %>
+	</p>
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
+
+
 
 <%= link_to 'Back', users_path %>

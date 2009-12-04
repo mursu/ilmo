@@ -1,0 +1,9 @@
+<h2>Maileri!</h2>
+
+<% form_tag do %>
+	Subject: <%= text_field_tag :subject %>
+	<br/>
+	<%= text_area_tag :body %>
+	<br/>
+	<%= submit_tag 'Send' %>
+<% end %>
