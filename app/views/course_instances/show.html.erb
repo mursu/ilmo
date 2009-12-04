@@ -1,0 +1,15 @@
+<h2>Course: <%= h @course_instance.course.name %>, <%=h @course_instance.instance_name %></h2>
+ 
+<h2>Exercise Groups:</h2>
+ 
+<% if @course_instance.exercise_groups.any? %>
+<ul>
+<% @course_instance.exercise_groups.each do |exercise_group| %>
+   <li><%= link_to exercise_group.name, exercise_group_path(exercise_group.id) %></li>
+<% end %>
+</ul>
+<% else %>
+<p>No exercise groups.</p>
+<% end %>
+ 
+<%= link_to 'Back', course_path(@course_instance.course) %>

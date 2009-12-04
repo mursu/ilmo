@@ -1,8 +1,8 @@
 class CreateCourseInstances < ActiveRecord::Migration
   def self.up
     create_table :course_instances do |t|
-      t.int :course_id
       t.string :instance_name
+      t.integer :course_id
 
       t.timestamps
     end

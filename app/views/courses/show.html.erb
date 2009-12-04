@@ -8,4 +8,19 @@
   <%=h @course.description %>
 </p>
 
+<h2>Course Instances</h2>
+
+<% if @course.course_instances.any? %>
+<ul>
+	<% @course.course_instances.each do |course_instance| %>
+	<li><%= link_to course_instance.instance_name, course_instance_path(course_instance.id) %></li>
+	<% end %>
+</ul>
+
+<% else %>
+	<p>No Course Instances</p>
+<% end %>
+
+<%= link_to 'Back', :back %>
+
 <%= link_to 'Courses index', courses_path %>
