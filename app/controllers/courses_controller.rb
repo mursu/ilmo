@@ -3,6 +3,12 @@ class CoursesController < ApplicationController
   def index
     @user = User.find_by_id(session[:user_id])
     @courses = Course.all
+    
+    respond_to do |format|
+      format.html
+      format.rss
+    end
+    
   end
 
   # GET /courses/1
